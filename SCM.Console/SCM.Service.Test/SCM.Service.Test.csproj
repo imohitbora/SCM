@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +78,16 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\SCM.Domain.csproj">
+      <Project>{F59D9539-02CB-49A7-A99A-BD54DB42A5C7}</Project>
+      <Name>SCM.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCM.Service\SCM.Service.csproj">
+      <Project>{9D55D8A9-910B-4760-8DFF-F93A4A4D1054}</Project>
+      <Name>SCM.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
