@@ -1,5 +1,6 @@
 ﻿using Domain;
 using SCM.Service.IService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +17,11 @@ namespace SCM.Service.Service
 
         public void ApplyPromotion(Order order)
         {
+            if(order == null || order.LineItems.Count() == 0)
+            {
+                return;
+            }
+
             foreach (IPromotion promotion in _promotions.OrderBy(x => x.Priority))
             {
                 promotion.ApplyPromotion(order);
