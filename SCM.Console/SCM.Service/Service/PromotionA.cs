@@ -1,23 +1,40 @@
 ﻿using Domain;
 using SCM.Service.IService;
-using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace SCM.Service.Service
 {
-    public class PromotionA : IPromotionService
+    public class PromotionA : IPromotion
     {
-        public void ApplyPromotion(ICollection<LineItem> items)
+        public void ApplyPromotion(Order order)
         {
-            while(IsApplicable(items))
-            {
+            if (order == null) return;
 
+            LineItem lineItem = order.LineItems.FirstOrDefault(x => x.Item.SKUId == 'A');
+
+            while (true)
+            {
+                if (!IsApplicable(lineItem))
+                {
+                    break;
+                }
+
+                lineItem.PromotionAppliedQty += 3;
+                lineItem.PromountAmount = 20;
             }
         }
 
-        public bool IsApplicable(ICollection<LineItem> items)
+        public bool IsApplicable(LineItem item)
         {
-            return false;
+            return item.OrderedQty - item.PromotionAppliedQty >= 3;
+        }
+
+        public int Priority
+        {
+            get
+            {
+                return 1;
+            }
         }
     }
 }

@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain
 {
     public class Order
     {
-        public ICollection<LineItem> Items { get; set; }
+        public IEnumerable<LineItem> LineItems { get; set; }
 
-        public int Total { get; set; }
+        public decimal Total
+        {
+            get
+            {
+                return LineItems.Sum(x => x.Amount);
+            }
+        }
     }
 }
