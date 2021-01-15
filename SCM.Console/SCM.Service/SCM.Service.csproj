@@ -46,6 +46,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\PromotionA.cs" />
+    <Compile Include="Service\PromotionB.cs" />
+    <Compile Include="Service\PromotionCandD.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\SCM.Domain.csproj">

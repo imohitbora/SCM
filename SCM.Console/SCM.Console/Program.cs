@@ -1,31 +1,38 @@
-﻿using Ninject;
+﻿using Domain;
+using Ninject;
 using SCM.Service.IService;
 using SCM.Service.Service;
+using System;
 
-namespace SCM.Console
+namespace SCM.ConsoleApp
 {
     public class Program
     {
         private static IKernel kernel;
         private static IOrderService _orderService;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             RegisterDependency();
             _orderService = kernel.Get<IOrderService>();
 
-            var order = OrderFactory.GetOrder();
+            Order order = OrderFactory.GetOrder();
 
             _orderService.ApplyPromotion(order);
+
+            Console.WriteLine(order.NetAmount);
+            Console.ReadKey();
         }
-        
+
         private static void RegisterDependency()
         {
             kernel = new StandardKernel();
             kernel.Bind<IPromotion>().To<PromotionA>();
+            kernel.Bind<IPromotion>().To<PromotionCandD>();
+            kernel.Bind<IPromotion>().To<PromotionB>();
+
+
             kernel.Bind<IOrderService>().To<OrderService>();
         }
-
-        
     }
 }

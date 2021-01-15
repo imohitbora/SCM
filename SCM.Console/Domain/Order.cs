@@ -11,7 +11,15 @@ namespace Domain
         {
             get
             {
-                return LineItems.Sum(x => x.Amount);
+                return LineItems.Sum(x => x.Price);
+            }
+        }
+
+        public decimal NetAmount
+        {
+            get
+            {
+                return LineItems.Sum(x => x.PriceAfterPromotion);
             }
         }
     }

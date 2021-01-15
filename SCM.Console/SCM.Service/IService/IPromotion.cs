@@ -4,7 +4,7 @@ namespace SCM.Service.IService
 {
     public interface IPromotion
     {
-        void ApplyPromotion(Order items);
+        void ApplyPromotion(Order order);
 
         int Priority { get; }        
     }

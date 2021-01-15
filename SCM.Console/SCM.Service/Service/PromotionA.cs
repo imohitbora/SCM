@@ -20,13 +20,13 @@ namespace SCM.Service.Service
                 }
 
                 lineItem.PromotionAppliedQty += 3;
-                lineItem.PromountAmount = 20;
+                lineItem.PromotionAmount = 20;
             }
         }
 
         public bool IsApplicable(LineItem item)
         {
-            return item.OrderedQty - item.PromotionAppliedQty >= 3;
+            return item != null && item.OrderedQty - item.PromotionAppliedQty >= 3;
         }
 
         public int Priority

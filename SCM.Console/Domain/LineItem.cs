@@ -10,8 +10,10 @@
 
         public int PromotionAppliedQty { get; set; }
 
-        public decimal PromountAmount { get; set; }
+        public decimal PromotionAmount { get; set; }
 
-        public decimal Amount => OrderedQty * Item.Price - PromountAmount;
+        public decimal Price => OrderedQty * Item.Price;
+
+        public decimal PriceAfterPromotion => OrderedQty * Item.Price - PromotionAmount;
     }
 }

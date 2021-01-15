@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.Console", "SCM.Console\SCM.Console.csproj", "{586B7F56-D801-4BA7-9395-3E3B4FBD7ABA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.ConsoleApp", "SCM.Console\SCM.ConsoleApp.csproj", "{586B7F56-D801-4BA7-9395-3E3B4FBD7ABA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCM.Domain", "Domain\SCM.Domain.csproj", "{F59D9539-02CB-49A7-A99A-BD54DB42A5C7}"
 EndProject
