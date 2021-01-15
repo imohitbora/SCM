@@ -1,16 +1,12 @@
 ﻿using Domain;
 using SCM.Service.IService;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SCM.Service.Service
 {
     public class PromotionB : IPromotion
     {
-        public int Priority => 1;
+        public int Priority => 3;
 
         public void ApplyPromotion(Order order)
         {
@@ -21,7 +17,7 @@ namespace SCM.Service.Service
             while (IsApplicable(lineItem))
             {
                 lineItem.PromotionAppliedQty += 2;
-                lineItem.PromotionAmount = 15;
+                lineItem.PromotionAmount += 15;
             }
         }
 

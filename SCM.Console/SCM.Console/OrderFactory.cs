@@ -12,7 +12,7 @@ namespace SCM.ConsoleApp
             var lineItemD = GetLineItemD();
             var lineItemB = GetLineItemB();
 
-            lineItemA.OrderedQty = 5;
+            lineItemA.OrderedQty = 3;
             lineItemC.OrderedQty = 1;
             lineItemD.OrderedQty = 1;
             lineItemB.OrderedQty = 5;
@@ -24,7 +24,7 @@ namespace SCM.ConsoleApp
                 {
                     lineItemA,
                     lineItemC,
-                    //lineItemD,
+                    lineItemD,
                     lineItemB
                 }
             };
