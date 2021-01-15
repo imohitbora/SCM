@@ -2,6 +2,7 @@
 using Moq;
 using SCM.Service.IService;
 using SCM.Service.Service;
+using SCM.Service.Test.Data;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -35,7 +36,7 @@ namespace SCM.Service.Test
         public void Test_ApplyPromotion_Scenario1()
         {
             //Arrange
-            Order order = GetOrderForScenario1();
+            Order order = OrderGenerator.GetOrderForScenario1();
             SetupPromotionA();
             SetupPromotionB();
             SetupPromotionCD();
@@ -46,6 +47,40 @@ namespace SCM.Service.Test
             //Assert
             Assert.Equal(100, order.NetAmount);
         }
+
+        [Fact]
+        public void Test_ApplyPromotion_Scenario2()
+        {
+            //Arrange
+            Order order = OrderGenerator.GetOrderForScenario2();
+            SetupPromotionA();
+            SetupPromotionB();
+            SetupPromotionCD();
+
+            //Act
+            _orderService.ApplyPromotion(order);
+
+            //Assert
+            Assert.Equal(370, order.NetAmount);
+        }
+
+        [Fact]
+        public void Test_ApplyPromotion_Scenario3()
+        {
+            //Arrange
+            Order order = OrderGenerator.GetOrderForScenario3();
+            SetupPromotionA();
+            SetupPromotionB();
+            SetupPromotionCD();
+
+            //Act
+            _orderService.ApplyPromotion(order);
+
+            //Assert
+            Assert.Equal(280, order.NetAmount);
+        }
+
+        #region Private methods
 
         private void SetupPromotionA()
         {
@@ -94,86 +129,6 @@ namespace SCM.Service.Test
             });
         }
 
-
-        private Order GetOrderForScenario1()
-        {
-            var lineItemA = GetLineItemA();
-            var lineItemC = GetLineItemC();
-            var lineItemB = GetLineItemB();
-
-            lineItemA.OrderedQty = 1;
-            lineItemB.OrderedQty = 1;
-            lineItemC.OrderedQty = 1;
-
-            return new Order
-            {
-                LineItems = new List<LineItem>
-                {
-                    lineItemA,
-                    lineItemC,
-                    lineItemB
-                }
-            };
-        }
-
-        private static LineItem GetLineItemA()
-        {
-            return new LineItem
-            {
-                Id = 1,
-                Item = new Item
-                {
-                    Id = 1,
-                    Price = 50,
-                    SKUId = 'A'
-                },
-                OrderedQty = 3,
-            };
-        }
-
-        private static LineItem GetLineItemC()
-        {
-            return new LineItem
-            {
-                Id = 2,
-                Item = new Item
-                {
-                    Id = 2,
-                    Price = 20,
-                    SKUId = 'C'
-                },
-                OrderedQty = 1,
-            };
-        }
-
-        private static LineItem GetLineItemD()
-        {
-            return new LineItem
-            {
-                Id = 3,
-                Item = new Item
-                {
-                    Id = 3,
-                    Price = 15,
-                    SKUId = 'D'
-                },
-                OrderedQty = 1,
-            };
-        }
-
-        private static LineItem GetLineItemB()
-        {
-            return new LineItem
-            {
-                Id = 4,
-                Item = new Item
-                {
-                    Id = 4,
-                    Price = 30,
-                    SKUId = 'B'
-                },
-                OrderedQty = 1,
-            };
-        }
+        #endregion
     }
 }

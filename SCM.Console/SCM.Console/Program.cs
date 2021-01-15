@@ -2,7 +2,6 @@
 using Ninject;
 using SCM.Service.IService;
 using SCM.Service.Service;
-using System;
 
 namespace SCM.ConsoleApp
 {
@@ -14,14 +13,10 @@ namespace SCM.ConsoleApp
         public static void Main(string[] args)
         {
             RegisterDependency();
+
             _orderService = kernel.Get<IOrderService>();
-
             Order order = OrderFactory.GetOrder();
-
             _orderService.ApplyPromotion(order);
-
-            Console.WriteLine(order.NetAmount);
-            Console.ReadKey();
         }
 
         private static void RegisterDependency()
