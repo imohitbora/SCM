@@ -19,13 +19,8 @@ namespace SCM.Service.Service
             LineItem lineItemC = order.LineItems.FirstOrDefault(x => x.Item.SKUId == 'C');
             LineItem lineItemD = order.LineItems.FirstOrDefault(x => x.Item.SKUId == 'D');
 
-            while (true)
+            while (IsApplicable(lineItemC, lineItemD))
             {
-                if (!IsApplicable(lineItemC, lineItemD))
-                {
-                    break;
-                }
-
                 lineItemC.PromotionAppliedQty += 1;
                 lineItemD.PromotionAppliedQty += 1;
 

@@ -15,12 +15,14 @@ namespace Domain
             }
         }
 
-        public decimal NetAmount
+        public decimal PromotionTotal
         {
             get
             {
-                return LineItems.Sum(x => x.PriceAfterPromotion);
+                return LineItems.Sum(x => x.PromotionAmount);
             }
         }
+
+        public decimal NetAmount => Total - PromotionTotal;
     }
 }
