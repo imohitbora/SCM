@@ -17,15 +17,13 @@ namespace SCM.Service.Service
 
         public void ApplyPromotion(Order order)
         {
-            if(order == null || order.LineItems.Count() == 0)
+            if(order?.LineItems?.Count() > 0)
             {
-                return;
-            }
-
-            foreach (IPromotion promotion in _promotions.OrderBy(x => x.Priority))
-            {
-                promotion.ApplyPromotion(order);
-            }
+                foreach (IPromotion promotion in _promotions.OrderBy(x => x.Priority))
+                {
+                    promotion.ApplyPromotion(order);
+                }
+            }            
         }
     }
 }
